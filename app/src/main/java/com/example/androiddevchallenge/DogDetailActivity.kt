@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge
 
 import android.content.Intent
@@ -71,7 +86,8 @@ fun MyDetailView(dog: Dog) {
             Image(
                 modifier = Modifier
                     .fillMaxWidth(1F)
-                    .aspectRatio(1F, true), contentScale = ContentScale.Crop, painter = painterResource(id = dog.img), contentDescription = "Picture for ${dog.type} named ${dog.nickname}"
+                    .aspectRatio(1F, true),
+                contentScale = ContentScale.Crop, painter = painterResource(id = dog.img), contentDescription = "Picture for ${dog.type} named ${dog.nickname}"
             )
             Row(modifier = Modifier.padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                 val feed = remember { mutableStateOf(false) }
@@ -81,17 +97,21 @@ fun MyDetailView(dog: Dog) {
                 }
                 Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.End) {
                     if (feed.value) {
-                        Button(onClick = {
-                            feed.value = !feed.value
-                            dog.feed = feed.value
-                        }) {
+                        Button(
+                            onClick = {
+                                feed.value = !feed.value
+                                dog.feed = feed.value
+                            }
+                        ) {
                             Text(text = "Sell", color = Color.White)
                         }
                     } else {
-                        Button(onClick = {
-                            feed.value = !feed.value
-                            dog.feed = feed.value
-                        }) {
+                        Button(
+                            onClick = {
+                                feed.value = !feed.value
+                                dog.feed = feed.value
+                            }
+                        ) {
                             Text(text = "FEED ME", color = Color.White)
                         }
                     }

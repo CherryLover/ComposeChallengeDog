@@ -78,12 +78,14 @@ fun MyApp(dogList: List<Dog> = mutableListOf(), onDogItemClick: (dog: Dog) -> Un
     pageView("DogList") {
         LazyColumn(modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp)) {
             items(items = dogList) { dog ->
-                Row(verticalAlignment = Alignment.CenterVertically
-                    , modifier = Modifier.padding(horizontal = 0.dp, vertical = 4.dp)
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(horizontal = 0.dp, vertical = 4.dp)
                         .fillMaxWidth(1F)
                         .clickable {
-                        onDogItemClick(dog)
-                    }) {
+                            onDogItemClick(dog)
+                        }
+                ) {
                     Image(painter = painterResource(id = dog.img), modifier = Modifier.size(120.dp, 90.dp), contentScale = ContentScale.Crop, contentDescription = "Picture for ${dog.type} named ${dog.nickname}")
                     Column(modifier = Modifier.padding(8.dp, 0.dp, 8.dp, 0.dp)) {
                         Text(text = dog.nickname, style = MaterialTheme.typography.h6, color = MaterialTheme.colors.primary)
@@ -115,7 +117,6 @@ fun LightPreview() {
         dogList.add(Dog("maris", "Siberian husky", R.drawable.ic_dog_hashiqi, 20, Color.Cyan, 1))
         dogList.add(Dog("Jackson", "Doberman", R.drawable.ic_dog_dubin, 13, Color.Blue, -1))
         MyApp(dogList) {
-
         }
     }
 }
@@ -135,7 +136,6 @@ fun DarkPreview() {
         dogList.add(Dog("maris", "Siberian husky", R.drawable.ic_dog_hashiqi, 20, Color.Cyan, 1))
         dogList.add(Dog("Jackson", "Doberman", R.drawable.ic_dog_dubin, 13, Color.Blue, -1))
         MyApp(dogList) {
-
         }
     }
 }
