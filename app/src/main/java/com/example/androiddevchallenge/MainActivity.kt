@@ -17,7 +17,6 @@ package com.example.androiddevchallenge
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
@@ -49,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MyTheme {
                 MyApp(DogStore.getDogList()) {
-                    Log.d("Click --> ", "dog info ${it.toString()}")
                     DogDetailActivity.start(this, it)
                 }
             }
@@ -59,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == DogDetailActivity.REQ_START && resultCode == RESULT_OK) {
-            val dog: Dog = data?.getSerializableExtra(DogDetailActivity.KEY_DOG_OBJ) as Dog ?: return
+            val dog: Dog = data?.getSerializableExtra(DogDetailActivity.KEY_DOG_OBJ) as Dog
             for (dogStoreDog in DogStore.getDogList()) {
                 if (dogStoreDog.nickname == dog.nickname && dogStoreDog.type == dog.type) {
                     dogStoreDog.feed = dog.feed
@@ -115,14 +113,14 @@ fun LightPreview() {
         dogList.add(Dog("sharp", "German Shepherd", R.drawable.ic_dog_heibai, 12, Color.Black, 0))
         dogList.add(Dog("andrew", "Labrador Retriever", R.drawable.ic_dog_labuladuo, 8, Color.White, 1))
         dogList.add(Dog("maris", "Siberian husky", R.drawable.ic_dog_hashiqi, 20, Color.Cyan, 1))
-        dogList.add(Dog("kangkang", "Doberman", R.drawable.ic_dog_dubin, 13, Color.Blue, -1))
+        dogList.add(Dog("Jackson", "Doberman", R.drawable.ic_dog_dubin, 13, Color.Blue, -1))
         MyApp(dogList) {
-            Log.d("Click --> ", "dog info ${it.toString()}")
+
         }
     }
 }
 
-//@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
@@ -135,9 +133,9 @@ fun DarkPreview() {
         dogList.add(Dog("sharp", "German Shepherd", R.drawable.ic_dog_heibai, 12, Color.Black, 0))
         dogList.add(Dog("andrew", "Labrador Retriever", R.drawable.ic_dog_labuladuo, 8, Color.White, 1))
         dogList.add(Dog("maris", "Siberian husky", R.drawable.ic_dog_hashiqi, 20, Color.Cyan, 1))
-        dogList.add(Dog("kangkang", "Doberman", R.drawable.ic_dog_dubin, 13, Color.Blue, -1))
+        dogList.add(Dog("Jackson", "Doberman", R.drawable.ic_dog_dubin, 13, Color.Blue, -1))
         MyApp(dogList) {
-            Log.d("Click --> ", "dog info ${it.toString()}")
+
         }
     }
 }
