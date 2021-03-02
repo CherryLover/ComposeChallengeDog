@@ -1,8 +1,6 @@
 package com.example.androiddevchallenge
 
 import androidx.compose.ui.graphics.Color
-import androidx.lifecycle.ViewModel
-import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.data.Dog
 
 /**
