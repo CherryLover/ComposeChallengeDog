@@ -30,7 +30,7 @@ import com.example.androiddevchallenge.ui.pageView
  * @description
  * @author: Created jiangjiwei in 2021/3/2 6:56 下午
  */
-class DogDetailActivity: AppCompatActivity() {
+class DogDetailActivity : AppCompatActivity() {
 
     companion object {
         const val KEY_DOG_OBJ = "DOG_OBJ"
@@ -43,6 +43,7 @@ class DogDetailActivity: AppCompatActivity() {
             context.startActivityForResult(starter, REQ_START)
         }
     }
+
     var cDoge: Dog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,14 +68,13 @@ class DogDetailActivity: AppCompatActivity() {
 fun MyDetailView(dog: Dog) {
     pageView("${dog.nickname} Info") {
         Column(modifier = Modifier.padding(vertical = 8.dp, horizontal = 15.dp)) {
-            Image(modifier = Modifier
-                .fillMaxWidth(1F)
-                .aspectRatio(1F, true)
-                , contentScale = ContentScale.Crop
-                , painter = painterResource(id = dog.img)
-                , contentDescription = "Picture for ${dog.type} named ${dog.nickname}")
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth(1F)
+                    .aspectRatio(1F, true), contentScale = ContentScale.Crop, painter = painterResource(id = dog.img), contentDescription = "Picture for ${dog.type} named ${dog.nickname}"
+            )
             Row(modifier = Modifier.padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                val feed = remember { mutableStateOf(false)}
+                val feed = remember { mutableStateOf(false) }
                 Column {
                     Text(text = dog.nickname, style = MaterialTheme.typography.h6, color = MaterialTheme.colors.primary)
                     Text(text = "Breed: ${dog.type}\nAge: ${dog.monthAge} Months", style = MaterialTheme.typography.body1, color = MaterialTheme.colors.onSecondary)
